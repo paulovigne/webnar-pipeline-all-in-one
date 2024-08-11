@@ -50,6 +50,6 @@ jobs:
 
       - name: Update/Create Ingress
         run: |
-          kubectl -n ${{ vars.K8S_NAMESPACE }} create ingress ${{ vars.APPNAME }} --rule="foo.com/*=${{ vars.APPNAME }}:${{ env.PORT }}" \
+          kubectl -n ${{ vars.K8S_NAMESPACE }} create ingress ${{ vars.APPNAME }} --rule="${{ vars.K8S_INGRESS_HOST }}/*=${{ vars.APPNAME }}:${{ env.PORT }}" \
           --dry-run=client -o yaml |\
           ${{ env.KUBECTL }} apply -f -
