@@ -31,10 +31,10 @@ jobs:
       PORT: 8080
       REPLICAS: 4
     steps:
-      - name: Update/Create Namespace
-        run: |
-          kubectl create namespace ${{ vars.APPNAME }} --dry-run=client -o yaml |\
-          ${{ env.KUBECTL }} apply -f -
+#      - name: Update/Create Namespace
+#        run: |
+#          kubectl create namespace ${{ vars.APPNAME }} --dry-run=client -o yaml |\
+#          ${{ env.KUBECTL }} apply -f -
 
       - name: Update/Create Deployment
         run: |
