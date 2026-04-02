@@ -51,7 +51,7 @@ jobs:
 
       - name: Update/Create Ingress
         run: |
-          kubectl expose service ${{ vars.APPNAME }}
+          kubectl expose service ${{ vars.APPNAME }} --dry-run=client -o yaml | ${{ env.KUBECTL }} apply -f -
           #kubectl -n ${{ vars.K8S_NAMESPACE }} create ingress ${{ vars.APPNAME }} --rule="${{ vars.K8S_INGRESS_HOST }}/*=${{ vars.APPNAME }}:${{ env.PORT }}" \
           #--dry-run=client -o yaml |\
           #${{ env.KUBECTL }} apply -f -
